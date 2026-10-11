@@ -1,0 +1,104 @@
+{
+  "id": "lookahead-1-2",
+  "parent_commit": "679dbd88bb4a0062b3611c912f4d5e878e2e3574",
+  "parent_gds_run_id": 37843865974,
+  "baseline_rtl_sha256": "e070e8658952ff7314bfd6ce7e69e035233953ccced5e57fa44714ae7d9f2fe2",
+  "rtl_changes": [
+    "1: peak-update lookahead - candidate expiry, buffer distinctness and the three magnitude comparisons are evaluated on the capture edge and registered; the processing edge only selects",
+    "2: registered sampling strobe - take_sample_q replaces the same-cycle 27-bit divider equality compare"
+  ],
+  "functional_change": "none; pin behaviour cycle-identical to v6, all v6 registers retained",
+  "synthesis_strategy": "AREA 0",
+  "acceptance_profile": "official-ttsky26d-defaults",
+  "baseline_config": {
+    "PL_TARGET_DENSITY_PCT": 60,
+    "CLOCK_PERIOD": 12.5,
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+    "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.05,
+    "RUN_LINTER": 1,
+    "LINTER_INCLUDE_PDK_MODELS": 1,
+    "CLOCK_PORT": "clk",
+    "RUN_KLAYOUT_XOR": 0,
+    "RUN_KLAYOUT_DRC": 0,
+    "DESIGN_REPAIR_BUFFER_OUTPUT_PORTS": 0,
+    "TOP_MARGIN_MULT": 1,
+    "BOTTOM_MARGIN_MULT": 1,
+    "LEFT_MARGIN_MULT": 6,
+    "RIGHT_MARGIN_MULT": 6,
+    "FP_SIZING": "absolute",
+    "GRT_ALLOW_CONGESTION": 1,
+    "FP_IO_HLENGTH": 2,
+    "FP_IO_VLENGTH": 2,
+    "FP_PDN_VPITCH": 38.87,
+    "RUN_CTS": 1,
+    "FP_PDN_MULTILAYER": 0,
+    "MAGIC_DEF_LABELS": 0,
+    "MAGIC_WRITE_LEF_PINONLY": 1,
+    "IO_DELAY_CONSTRAINT": 20,
+    "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+    "SYNTH_STRATEGY": "AREA 0",
+    "FP_CORE_UTIL": 50,
+    "MAX_TRANSITION_CONSTRAINT": 0.75,
+    "MAX_CAPACITANCE_CONSTRAINT": null,
+    "MAX_FANOUT_CONSTRAINT": 10,
+    "TIMING_VIOLATION_CORNERS": [
+      "*"
+    ],
+    "HOLD_VIOLATION_CORNERS": [
+      "*"
+    ],
+    "MAX_SLEW_VIOLATION_CORNERS": [
+      "*"
+    ],
+    "MAX_CAP_VIOLATION_CORNERS": [
+      "*"
+    ],
+    "STA_CORNERS": [
+      "nom_tt_025C_1v80",
+      "nom_ss_100C_1v60",
+      "nom_ff_n40C_1v95",
+      "min_tt_025C_1v80",
+      "min_ss_100C_1v60",
+      "min_ff_n40C_1v95",
+      "max_tt_025C_1v80",
+      "max_ss_100C_1v60",
+      "max_ff_n40C_1v95"
+    ],
+    "RUN_POST_GRT_DESIGN_REPAIR": true,
+    "RUN_POST_GRT_RESIZER_TIMING": true
+  },
+  "removed_config_keys": [
+    "TIMING_VIOLATION_CORNERS",
+    "HOLD_VIOLATION_CORNERS",
+    "MAX_SLEW_VIOLATION_CORNERS",
+    "MAX_CAP_VIOLATION_CORNERS"
+  ],
+  "config_overrides": {},
+  "immutable_files_sha256": {
+    "src/project.v": "4f8eacab14d4b28189bba12c30dd3976ba01edec4762a5f57c8aed0f127f1b52",
+    "src/sky_wrapper.v": "a055a2587504f9a95d2d9dcc6975e1c7b52c37ce6ed9929239d35ae491dd39d1",
+    "test/Makefile": "ca6ae03720133a0e68da3e41a9c3c2aae658a8c51ba6ec5840ae0335285b0496",
+    "test/README.md": "5ba13315c1ce33427d0a5d91e99c770dff5b8ec4adbaac3aeb0e674918353c3d",
+    "test/requirements.txt": "e2178d5663202c0e4398788fa6c2b2a9f7852712a416a136b3a1d142d22f51ab",
+    "test/tb.gtkw": "aad62770ad1b98dc6151569c325fdb6101e5fd74e3412e2a0ccb7fbab08c4ba6",
+    "test/tb.v": "27d932ab18078c06377e6d29c3814d8ce63362f69f89195e97ed878b3ee3c1e6",
+    "test/test.py": "1dccb97eb3474bd26d2314976b0c28ccaf4ae1ad351855cf0ee83d881dae6c0c",
+    "test/equivalence/v6_reference.v": "9de2e21b15533c578ffa4457a205ffb18f38cace252bae44f480e23bf660b6c6"
+  },
+  "expected_resolved_checker_defaults": {
+    "TIMING_VIOLATION_CORNERS": [
+      "*tt*"
+    ],
+    "SETUP_VIOLATION_CORNERS": null,
+    "HOLD_VIOLATION_CORNERS": [
+      "*"
+    ],
+    "MAX_SLEW_VIOLATION_CORNERS": [
+      ""
+    ],
+    "MAX_CAP_VIOLATION_CORNERS": [
+      ""
+    ]
+  },
+  "scope": "RTL timing restructuring only (changes 1 and 2). Implementation configuration, wrapper, tests, tiles and clock are identical to the official-checks experiment 679dbd8; the GDS/precheck/GL/viewer, docs, test and fpga workflows are the unmodified official TTSKY26d template files."
+}

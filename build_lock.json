@@ -1,0 +1,32 @@
+{
+  "baseline_commit": "dae89331466486dab23fe0605b45c979ee50ef03",
+  "parent_commit": "679dbd88bb4a0062b3611c912f4d5e878e2e3574",
+  "baseline_source_sha256": "e070e8658952ff7314bfd6ce7e69e035233953ccced5e57fa44714ae7d9f2fe2",
+  "source_sha256": "4f8eacab14d4b28189bba12c30dd3976ba01edec4762a5f57c8aed0f127f1b52",
+  "top_module": "tt_um_barrylee911_sine_area_v6",
+  "template_commit": "68c3fd3f3ec640e5edcb6a5f74f360ebc016bb2a",
+  "action_commit": "395eedb3eeec3c2f4961c3b04ff2cf87f5525636",
+  "support_tools_commit": "01d5d2814fa9dd61e9d211e0b235a4a592a9316a",
+  "pdk_version": "8afc8346a57fe1ab7934ba5a6056ea8b43078e71",
+  "librelane_version": "3.0.14",
+  "sta_corners": [
+    "nom_tt_025C_1v80",
+    "nom_ss_100C_1v60",
+    "nom_ff_n40C_1v95",
+    "min_tt_025C_1v80",
+    "min_ss_100C_1v60",
+    "min_ff_n40C_1v95",
+    "max_tt_025C_1v80",
+    "max_ss_100C_1v60",
+    "max_ff_n40C_1v95"
+  ],
+  "template_workflow_sha256": {
+    "gds.yaml": "7c90c5363e9f4770e1e6dd266844cdf918b0ef679dbf359d8e278b8c66dabff6",
+    "docs.yaml": "74135725ac236ca64e1360d9c1b4012cec75a361e5b84104280b1bb74ff919a0",
+    "test.yaml": "3a990054d61598ffbfdc89384cb4692979a99f54c22099364dd20d0a6ecd7bf2",
+    "fpga.yaml": "4c2a85b1f03f87d06c52f93e981f6c9343fdc358bb364f01bd9fa0c333ea8d77"
+  },
+  "action_ref": "ttsky26d",
+  "action_ref_resolves_to_on_2026_10_11": "395eedb3eeec3c2f4961c3b04ff2cf87f5525636",
+  "support_tools_note": "official action default tools-ref main resolved to 01d5d28 on 2026-10-11"
+}

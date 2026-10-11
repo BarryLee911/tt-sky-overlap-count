@@ -1,0 +1,1 @@
+GL RESULT cycles=305 errors=0 (yosys generic-cell netlist, HANDOFF_WAIT_CYCLES=40, vs v6 RTL, pins + X check every cycle)

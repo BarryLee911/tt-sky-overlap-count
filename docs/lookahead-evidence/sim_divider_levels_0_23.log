@@ -1,0 +1,26 @@
+level 0: 10 clocks, 10 strobes, errors so far 0
+level 1: 12 clocks, 6 strobes, errors so far 0
+level 2: 16 clocks, 4 strobes, errors so far 0
+level 3: 24 clocks, 3 strobes, errors so far 0
+level 4: 40 clocks, 2 strobes, errors so far 0
+level 5: 72 clocks, 2 strobes, errors so far 0
+level 6: 136 clocks, 2 strobes, errors so far 0
+level 7: 264 clocks, 2 strobes, errors so far 0
+level 8: 520 clocks, 2 strobes, errors so far 0
+level 9: 1032 clocks, 2 strobes, errors so far 0
+level 10: 2056 clocks, 2 strobes, errors so far 0
+level 11: 4104 clocks, 2 strobes, errors so far 0
+level 12: 8200 clocks, 2 strobes, errors so far 0
+level 13: 16392 clocks, 2 strobes, errors so far 0
+level 14: 32776 clocks, 2 strobes, errors so far 0
+level 15: 65544 clocks, 2 strobes, errors so far 0
+level 16: 131080 clocks, 2 strobes, errors so far 0
+level 17: 262152 clocks, 2 strobes, errors so far 0
+level 18: 524296 clocks, 2 strobes, errors so far 0
+level 19: 1048584 clocks, 2 strobes, errors so far 0
+level 20: 2097160 clocks, 2 strobes, errors so far 0
+level 21: 4194312 clocks, 2 strobes, errors so far 0
+level 22: 8388616 clocks, 2 strobes, errors so far 0
+level 23: 16777224 clocks, 2 strobes, errors so far 0
+DIVIDER RESULT clocks=33554622 errors=0
+./test/equivalence/tb_divider.v:40: $finish called at 335546940000 (1ps)

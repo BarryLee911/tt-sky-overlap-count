@@ -1,0 +1,82 @@
+{
+ "groups": {
+  "prescale_count": 4.584551579047577,
+  "handoff_count": 4.4855725729705584,
+  "prescale_terminal_latched": 3.9943707946055906,
+  "history_pointer": 3.8444930736194127,
+  "sample_position": 3.7043724164191736,
+  "config_latched_valid": 3.6455245309417705,
+  "sample_magnitude": 3.594407673314727,
+  "peak_second_position": 3.577687673124111,
+  "output_data": 3.5699176649223947,
+  "sample_overlap": 3.447391159958986,
+  "peak_second": 3.294656666675921,
+  "running_sum": 3.1002422223395074,
+  "peak_first_position": 3.072732862858089,
+  "peak_first": 2.934852081144026,
+  "stats_reset": 2.920614307312489,
+  "output_kind": 2.8290315457109907,
+  "output_ready": 2.8184277826131487,
+  "sample_valid": 2.791324991046018,
+  "peak_buffer_position": 1.9779901048731572,
+  "peak_second_valid": 1.9641128390940268,
+  "peak_buffer": 1.9491850112048863,
+  "window_full": 1.9125063434799876,
+  "overlap_history": 1.2181755062485402,
+  "oldest_overlap": 1.2181755062485402,
+  "peak_history_valid": 0.5892622477494845,
+  "<outputs>": 0.5790972575908625
+ },
+ "worst10": [
+  [
+   4.584551579047577,
+   "prescale_count[26]",
+   "D"
+  ],
+  [
+   4.527694826776608,
+   "prescale_count[25]",
+   "D"
+  ],
+  [
+   4.4855725729705584,
+   "handoff_count[16]",
+   "D"
+  ],
+  [
+   4.373807517098547,
+   "handoff_count[15]",
+   "D"
+  ],
+  [
+   4.359936711566012,
+   "prescale_count[24]",
+   "D"
+  ],
+  [
+   4.318547925967909,
+   "prescale_count[23]",
+   "D"
+  ],
+  [
+   4.234867278531931,
+   "handoff_count[14]",
+   "D"
+  ],
+  [
+   4.22374149483145,
+   "prescale_count[22]",
+   "D"
+  ],
+  [
+   4.107437433236746,
+   "prescale_count[21]",
+   "D"
+  ],
+  [
+   4.104226087572843,
+   "handoff_count[13]",
+   "D"
+  ]
+ ]
+}

@@ -1,0 +1,33 @@
+name: equivalence
+# Project-specific checks in addition to the official template workflows:
+# provenance (source, configuration, official workflow files) and cycle equivalence with v6.
+on: [push, workflow_dispatch]
+jobs:
+  equivalence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install simulator and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+          pip install PyYAML==6.0.2
+      - name: Verify source, configuration and official workflows
+        run: python scripts/verify_inputs.py
+      - name: Cycle equivalence against v6 RTL (pins and every v6 register)
+        run: |
+          cd test/equivalence
+          iverilog -g2005 -o eq.vvp -P tb_equiv.HANDOFF=40 -P tb_equiv.EPISODES=120 tb_equiv.v v6_reference.v ../../src/project.v
+          for seed in 101 202 303; do vvp -n eq.vvp +seed=$seed | tee -a equivalence.log; done
+          test "$(grep -c 'errors=0 state_errors=0' equivalence.log)" = 3
+      - name: Preserve results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: equivalence-results
+          path: |
+            verification/inputs.json
+            test/equivalence/equivalence.log

@@ -1,0 +1,18 @@
+# Sequential equivalence: v6 (gold) vs lookahead RTL (gate), register correspondence by name.
+# Run through run_formal.sh, which creates gold_observed.v / gate_observed.v.
+# Signals listed in blacklist.txt are v6 combinational terms that are only meaningful on a
+# processing edge; in the new RTL they are registered lookahead flags, so they are not matched.
+read_verilog gold_observed.v
+read_verilog gate_observed.v
+hierarchy -check
+proc
+opt_clean
+rename tt_um_sine_area_detector_v6 gold
+rename tt_um_sine_area_detector gate
+equiv_make -blacklist blacklist.txt gold gate equiv
+hierarchy -top equiv
+# The terminal-shape invariant must take part in the proof (no clean-up after equiv_make).
+select -assert-min 1 w:prescale_terminal_is_mask
+equiv_simple -seq 5
+equiv_induct -seq 5
+equiv_status -assert

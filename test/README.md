@@ -1,0 +1,1 @@
+Pin-level v6 reference regression at the period in src/config.json. Both RTL and SKY130 gate-level use the same test. Coverage includes reset, invalid and latched levels, real dividers, windows, saturation, peak expiry, and the 80000-clock handoff.

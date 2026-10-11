@@ -1,0 +1,2 @@
+# Preserve original v6 RTL bytes.
+src/project.v -text
