@@ -2,7 +2,7 @@
   "baseline_commit": "dae89331466486dab23fe0605b45c979ee50ef03",
   "parent_commit": "679dbd88bb4a0062b3611c912f4d5e878e2e3574",
   "baseline_source_sha256": "e070e8658952ff7314bfd6ce7e69e035233953ccced5e57fa44714ae7d9f2fe2",
-  "source_sha256": "20b671c4a276908aa26a78b172f26681ac802d8f76ee2cc7a78038cad010db8b",
+  "source_sha256": "279db397eecc4afd91e2f172e8bf21a465506f964cbf1438a8e865b14531323e",
   "top_module": "tt_um_barrylee911_sine_area_v6",
   "template_commit": "68c3fd3f3ec640e5edcb6a5f74f360ebc016bb2a",
   "action_commit": "395eedb3eeec3c2f4961c3b04ff2cf87f5525636",
@@ -37,5 +37,11 @@
       "src/sky_wrapper.v": "a055a2587504f9a95d2d9dcc6975e1c7b52c37ce6ed9929239d35ae491dd39d1"
     },
     "result_file": "src/project.v"
+  },
+  "comment_cleanup": {
+    "parent_commit": "5eb71120df3ef2946696d81a2bb13cae1b5e7dfd",
+    "path": "src/project.v",
+    "previous_source_sha256": "20b671c4a276908aa26a78b172f26681ac802d8f76ee2cc7a78038cad010db8b",
+    "operation": "Remove explanatory Verilog comments and tidy resulting blank lines; non-comment Verilog tokens are unchanged."
   }
 }

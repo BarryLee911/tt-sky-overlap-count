@@ -75,7 +75,7 @@
   ],
   "config_overrides": {},
   "immutable_files_sha256": {
-    "src/project.v": "20b671c4a276908aa26a78b172f26681ac802d8f76ee2cc7a78038cad010db8b",
+    "src/project.v": "279db397eecc4afd91e2f172e8bf21a465506f964cbf1438a8e865b14531323e",
     "test/Makefile": "d67a6fb84035bb068d160f6ab89ff73b233e775a9c9dd4b7ce3d1df0ec1b66ad",
     "test/README.md": "5ba13315c1ce33427d0a5d91e99c770dff5b8ec4adbaac3aeb0e674918353c3d",
     "test/requirements.txt": "e2178d5663202c0e4398788fa6c2b2a9f7852712a416a136b3a1d142d22f51ab",
@@ -99,5 +99,5 @@
       ""
     ]
   },
-  "scope": "RTL timing restructuring (changes 1 and 2), followed by single-file source consolidation. Consolidation preserves the core and wrapper module contents and hierarchy; only source compilation lists and provenance records change. Implementation configuration, regression test behaviour, tiles and clock remain unchanged. The GDS/precheck/GL/viewer, docs, test and fpga workflows are the unmodified official TTSKY26d template files."
+  "scope": "RTL timing restructuring (changes 1 and 2), followed by single-file source consolidation. Consolidation preserves the core and wrapper module contents and hierarchy; only source compilation lists and provenance records change. Implementation configuration, regression test behaviour, tiles and clock remain unchanged. The GDS/precheck/GL/viewer, docs, test and fpga workflows are the unmodified official TTSKY26d template files. Subsequent project.v comment cleanup preserves all non-comment Verilog tokens."
 }
