@@ -9,7 +9,6 @@ project:
   top_module: "tt_um_barrylee911_sine_area_v6"
   source_files:
     - "project.v"
-    - "sky_wrapper.v"
 
 pinout:
   ui[0]: "SAMPLE[0]"

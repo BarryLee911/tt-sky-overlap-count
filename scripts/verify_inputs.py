@@ -33,7 +33,7 @@ assert hashlib.sha256(reference).hexdigest() == V6_SHA256, 'v6 reference changed
 assert b'parameter integer HANDOFF_WAIT_CYCLES = 80000' in source
 assert info['clock_hz'] == 80000000 and info['tiles'] == '6x2'
 assert info['top_module'] == lock['top_module']
-assert info['source_files'] == ['project.v', 'sky_wrapper.v']
+assert info['source_files'] == ['project.v']
 period = Decimal(str(config['CLOCK_PERIOD']))
 assert period * info['clock_hz'] == Decimal('1000000000')
 assert period * Decimal(str(config['IO_DELAY_CONSTRAINT'])) / 100 == Decimal('2.5')
