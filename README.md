@@ -1,46 +1,23 @@
-# v6 SKY26d: lookahead timing experiment (changes 1 and 2 only)
+# Overlap Count
 
-![gds](../../actions/workflows/gds.yaml/badge.svg) ![docs](../../actions/workflows/docs.yaml/badge.svg) ![test](../../actions/workflows/test.yaml/badge.svg) ![equivalence](../../actions/workflows/equivalence.yaml/badge.svg)
+Counts sign agreement between input samples and an internal reference, with amplitude tracking.
 
-Parent: `679dbd88bb4a0062b3611c912f4d5e878e2e3574` (official-checks, all four jobs passed).
-Baseline RTL: v6, SHA256 `E070E8658952FF7314BFD6CE7E69E035233953CCCED5E57FA44714AE7D9F2FE2`.
+[![gds](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/gds.yaml/badge.svg)](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/gds.yaml) [![docs](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/docs.yaml/badge.svg)](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/docs.yaml) [![test](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/test.yaml/badge.svg)](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/test.yaml) [![equivalence](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/equivalence.yaml/badge.svg)](https://github.com/BarryLee911/tt-sky-ucl-project/actions/workflows/equivalence.yaml)
 
-This experiment changes only `src/project.v`. Function, ports, parameters, widths,
-reset, sampling phase and the N / N+1 / N+2 output pipeline are unchanged: the pins
-are cycle-for-cycle identical to v6, and every v6 register is retained with the same
-name and the same value on every clock.
+## Function
 
-1. **Peak-update lookahead.** Candidate expiry (10-bit position compares), buffer /
-   candidate distinctness and the three 8-bit magnitude compares are evaluated on the
-   edge that captures a sample and are registered (7 flags). The processing edge only
-   runs the existing selector logic on registered flags.
-2. **Registered sampling strobe.** `take_sample` is a flip-flop computed one edge
-   early instead of a 27-bit equality compare in the same cycle.
+- Accepts unsigned 8-bit samples centered on 128.
+- Counts sign agreement over a 2048-sample window and tracks an approximate peak magnitude over about 1024 samples.
+- Provides alternating count and magnitude results on an 11-bit output, with selectable sampling levels 0-23.
 
-Implementation configuration, wrapper, functional test, tiles (6x2), clock (80 MHz)
-and I/O delay are identical to the parent. The build follows the official Tiny Tapeout
-method: `.github/workflows/gds.yaml`, `docs.yaml`, `test.yaml` and `fpga.yaml` are the
-unmodified TTSKY26d template files (`TinyTapeout/tt-gds-action@ttsky26d`, sky130A:
-GDS -> precheck, gate-level test, GDS viewer; docs check and datasheet; cocotb RTL test).
-Project-specific checks live only in `equivalence.yaml`. `scripts/verify_inputs.py`
-checks the source, configuration and that the template workflows are unmodified.
-The `viewer` job needs GitHub Pages set to "GitHub Actions" (Settings -> Pages).
+## Use
 
-Verification included here (details and numbers: [docs/lookahead-1-2.md](docs/lookahead-1-2.md)):
+See the [pinout and operating instructions](docs/info.md) for reset, configuration, sampling and result capture. Results alternate every clock; read TYPE with each result.
 
-- `test/equivalence/run_formal.sh`: Yosys sequential equivalence (equiv_make /
-  equiv_induct) against the unmodified v6 RTL. All 2338 matched signals, including
-  all output pins and all v6 registers, proven.
-- `test/equivalence/tb_equiv.v`: Icarus co-simulation, v6 and new side by side from
-  reset, comparing pins and all v6 registers every cycle (also run in the
-  `equivalence` workflow).
-- `test/equivalence/tb_divider.v`: every legal level 0-23, two full intervals each.
-- The existing cocotb pin-level regression (`test/test.py`) is unchanged.
+Implementation: SKY130, 6x2 tiles, 80 MHz build target.
 
-Reproduce: every push runs the official `gds`, `docs` and `test` workflows plus
-`equivalence`. Locally: `sh test/equivalence/run_formal.sh`
-(Yosys) and the iverilog commands in `test/equivalence/README.md`.
+## Build status
 
-80 MHz remains above the published SKY130 input-pad rating. A passing workflow does
-not demonstrate reliable 80 MHz operation across all corners or on hardware. No
-shuttle registration, payment, or fabrication submission is performed.
+Hardware revision [`e28004b`](https://github.com/BarryLee911/tt-sky-ucl-project/commit/e28004be91a6c4317c196f91f2baf36358879f02) passed [GDS, precheck, gate-level test and viewer](https://github.com/BarryLee911/tt-sky-ucl-project/actions/runs/38254450471), [RTL tests](https://github.com/BarryLee911/tt-sky-ucl-project/actions/runs/38254450660), [documentation checks](https://github.com/BarryLee911/tt-sky-ucl-project/actions/runs/38254450473) and [cycle-equivalence checks](https://github.com/BarryLee911/tt-sky-ucl-project/actions/runs/38254450508). See [verification instructions](test/equivalence/README.md) for the check scope and local commands.
+
+80 MHz is a build target and exceeds the published input-pad rating. Worst-corner setup slack is approximately -0.111 ns; operation on fabricated hardware has not been verified.

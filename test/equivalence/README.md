@@ -1,32 +1,37 @@
-# Equivalence checks: lookahead RTL vs v6
+# Verification checks
 
-`v6_reference.v` is the v6 RTL (SHA256 E070E865...) with only the module name changed to
-`tt_um_sine_area_detector_v6`; `scripts/verify_inputs.py` checks this byte for byte.
+## Continuous integration
 
-## Formal (Yosys 0.62 tested)
+The `equivalence` workflow checks source and configuration provenance, then compares the current RTL with `v6_reference.v` using Icarus Verilog. Seeds 101, 202 and 303 compare output pins and matched reference registers every cycle; unknown pin values count as mismatches. CI uses a shortened 40-clock handoff for this comparison. The separate pin-level regression tests the normal 80000-clock handoff.
 
-    sh run_formal.sh            # or YOSYS=/path/to/yosys sh run_formal.sh
+The reference file is checked byte for byte by `scripts/verify_inputs.py`, apart from its module name. CI does not run the optional Yosys formal check or the separate all-level divider check. No current formal proof result is claimed here.
 
-Expected last line: `Of those cells 2338 are proven and 0 are unproven.`
+## Local checks
 
-Register correspondence is by name (all v6 registers keep their names). The v6
-combinational terms in `blacklist.txt` exist only on a processing edge; in the new RTL
-the same names are registered lookahead flags, so they are not matched. The script adds
-one observation wire to temporary copies (`prescale_terminal_is_mask`: v6 expression on
-gold, constant 1 on gate) so the induction also proves that the latched terminal is
-always 0 or 2^level - 1. Nothing in either design is driven by it.
+From the repository root:
 
-## Simulation (Icarus Verilog 12)
+```sh
+python scripts/verify_inputs.py
+cd test/equivalence
+iverilog -g2005 -o eq.vvp -P tb_equiv.HANDOFF=40 -P tb_equiv.EPISODES=120 tb_equiv.v v6_reference.v ../../src/project.v
+vvp -n eq.vvp +seed=101
+vvp -n eq.vvp +seed=202
+vvp -n eq.vvp +seed=303
+```
 
-    iverilog -g2005 -o eq.vvp -P tb_equiv.HANDOFF=40 -P tb_equiv.EPISODES=120 \
-        tb_equiv.v v6_reference.v ../../src/project.v
-    vvp -n eq.vvp +seed=101
+Optional divider check, from `test/equivalence`:
 
-    iverilog -g2005 -o div.vvp tb_divider.v v6_reference.v ../../src/project.v
-    vvp -n div.vvp                       # levels 0-23, ~33.5 M clocks
+```sh
+iverilog -g2005 -o div.vvp tb_divider.v v6_reference.v ../../src/project.v
+vvp -n div.vvp
+```
 
-`tb_equiv` starts with a reset edge, then runs random-length resets, invalid levels,
-levels 0-9 and eleven stimulus families (uniform, sine, small alphabets for ties, sparse
-spikes near 1024 spacing for expiry/refill, extremes, decaying envelopes). Every cycle
-it compares all output pins (X counts as a mismatch) and every v6 register. Define
-`PINS_ONLY` and `GL_NETLIST` to run it against a synthesized netlist.
+This exercises levels 0-23 for two full intervals each. It is not part of CI.
+
+Optional formal check, from the repository root, with Yosys installed:
+
+```sh
+sh test/equivalence/run_formal.sh
+```
+
+Assess the output of that run for the current revision; do not substitute historical proof counts.

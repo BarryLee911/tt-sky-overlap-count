@@ -1,8 +1,0 @@
-RESULT seed=101 handoff=40 cycles=1669926 episodes=120 errors=0 state_errors=0 processed=782693 expiries=245 refills=339 ties=42553
-RESULT seed=202 handoff=40 cycles=1578580 episodes=120 errors=0 state_errors=0 processed=812779 expiries=229 refills=330 ties=32368
-RESULT seed=303 handoff=40 cycles=1625467 episodes=120 errors=0 state_errors=0 processed=831638 expiries=250 refills=340 ties=42987
-RESULT seed=404 handoff=40 cycles=1611856 episodes=120 errors=0 state_errors=0 processed=767249 expiries=205 refills=270 ties=34408
-RESULT seed=505 handoff=40 cycles=1605564 episodes=120 errors=0 state_errors=0 processed=824229 expiries=162 refills=227 ties=47927
-RESULT seed=606 handoff=40 cycles=1473527 episodes=120 errors=0 state_errors=0 processed=815879 expiries=249 refills=316 ties=38881
-RESULT seed=777 handoff=80000 cycles=1177438 episodes=30 errors=0 state_errors=0 processed=812661 expiries=281 refills=250 ties=24770
-CAMPAIGN_DONE
