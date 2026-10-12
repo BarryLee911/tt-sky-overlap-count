@@ -378,6 +378,11 @@ module tt_um_sine_area_detector #(
         ((handoff_active && (handoff_due !== 1'b1)) === 1'b1);
 
     always @(posedge clk) begin
+        prescale_count <=
+            (rst_n === 1'b0) ? 27'd0 :
+            ((frontend_run && config_latched_valid) === 1'b1) ?
+                (take_sample_q ? 27'd0 : prescale_count + 27'd1) :
+                prescale_count;
         history_pointer <=
             (rst_n === 1'b0) ? 11'd0 :
             history_count_enable ? history_pointer + 11'd1 : history_pointer;
@@ -394,7 +399,6 @@ module tt_um_sine_area_detector #(
         if (!rst_n) begin
             config_latched_valid <= 1'b0;
             prescale_terminal_latched <= 27'd0;
-            prescale_count <= 27'd0;
             take_sample_q <= 1'b0;
             sample_valid <= 1'b0;
             sample_magnitude <= 8'd0;
@@ -416,9 +420,6 @@ module tt_um_sine_area_detector #(
             prescale_terminal_latched <= config_terminal;
             config_latched_valid <= 1'b1;
         end
-
-        if (frontend_run && config_latched_valid)
-            prescale_count <= take_sample_q ? 27'd0 : prescale_count + 27'd1;
 
         if (frontend_run)
             take_sample_q <= take_sample_d;

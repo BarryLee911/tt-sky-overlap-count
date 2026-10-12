@@ -75,7 +75,7 @@
   ],
   "config_overrides": {},
   "immutable_files_sha256": {
-    "src/project.v": "4f8eacab14d4b28189bba12c30dd3976ba01edec4762a5f57c8aed0f127f1b52",
+    "src/project.v": "9b09b49b4d0987eacd3e83bc270439a4999391f586d6e086f4f00eff887e6520",
     "src/sky_wrapper.v": "a055a2587504f9a95d2d9dcc6975e1c7b52c37ce6ed9929239d35ae491dd39d1",
     "test/Makefile": "ca6ae03720133a0e68da3e41a9c3c2aae658a8c51ba6ec5840ae0335285b0496",
     "test/README.md": "5ba13315c1ce33427d0a5d91e99c770dff5b8ec4adbaac3aeb0e674918353c3d",
